@@ -1,0 +1,362 @@
+// Bootstrap library.
+@import 'bootstrap';
+
+// Base-theme overrides.
+@import 'overrides';
+
+html, body {
+  height: 100%;
+}
+@media (min-width: @grid-float-breakpoint) {
+  body {
+	font-size: 20px;
+  }
+}
+.container {
+  @media (max-width: @screen-xs-max) {
+    width: 100%;
+  }
+}
+.lead {
+  font-size: floor((@font-size-base * 1.4));
+  @media (min-width: @screen-sm-min) {
+    font-size: (@font-size-base * 1.6);
+  }
+}
+.white-bg {
+  background-color: @white;
+}
+.primary-color {
+  color: @brand-primary;
+}
+@media (min-width: @grid-float-breakpoint) {
+  h1 {
+	font-size: 58px;
+  }
+  h2 {
+	font-size: 54px;
+  }
+  h3 {
+	font-size: 40px;
+  }
+}
+.form-control {
+  border-width: 2px;
+  .box-shadow(0 0 0 0 rgba(0,0,0,.075));
+  @media (min-width: @grid-float-breakpoint) {
+    font-size: 20px;
+  }
+}
+
+/*-- Slick ---*/
+.slick {
+  max-width: 100%;
+  position: relative;
+  .slick-list {
+	max-width: 100%;
+    position: relative;
+	.slick-slide {
+	  outline: none;
+	  padding-left:  floor((@grid-gutter-width / 2));
+      padding-right: ceil((@grid-gutter-width / 2));
+	}
+  }
+}
+.slick-dots {
+  li {
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	text-indent: -9999px;
+	overflow: hidden;
+	background-color: #979eb1;
+	&.slick-active {
+	  background-color: @brand-primary;
+	}
+  }
+}
+.slick__arrow {
+  .slick-arrow {
+	outline: none;
+	position: absolute;
+	top: 50%;
+	margin-top: -15px;
+	border: none;
+	width: 30px;
+	height: 30px;
+	background-color: transparent;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 10px;
+	font-size: 0;
+	text-indent: -9999px;
+	overflow: hidden;
+	&::before {display: none; }
+	&.slick-prev {
+	  background-image: url("../images/prev-arrow.svg");
+	  left: 0;
+	}
+	&.slick-next {
+	  background-image: url("../images/next-arrow.svg");
+	  right: 0;
+	}
+  }
+}
+
+/*--- scroll ---*/
+// WebKit
+@-webkit-keyframes arrow {
+  0%,100%  { top: 10px; }
+  50%    { top: 20px; }
+}
+// Spec and IE10+
+@keyframes arrow {
+  0%,100%  { top: 10px; }
+  50%    { top: 20px; }
+}
+.scroll {
+  position: relative;
+  font-size: 0;
+  text-indent: -9999px;
+  margin-top: 20px;
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  background: @brand-primary;
+  border: 2px solid @white;
+  .box-shadow(1px 1px 5px rgba(0,0,0,0.1));
+  &::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    margin: auto;
+    top: 10px;
+    right: 0;
+    left: 0;
+    border-right: 2px solid @white;
+    border-bottom: 2px solid @white;
+    .rotate (45deg);
+    .animation (arrow 3s infinite ease);
+  }
+}
+.white-bg {
+  .scroll {
+	border-color: #414042;
+	background-color: @white;
+	&::after {
+	  border-color: #414042;
+	}
+  }
+}
+
+#navbar {
+  background-color: @brand-primary;
+  color: @white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.navbar-header {
+  float: none;
+  padding: 30px 15px;
+  .logo {
+	display: block;
+	width: 180px;
+	margin: 0 auto 15px auto;
+  }
+}
+.block-title {
+  margin-bottom: 60px;
+}
+
+/*--- header ---*/
+.front {
+  .navbar-header {
+	max-width: 450px;
+	margin: 0 auto 0 auto;
+	.logo {
+	  max-width: 260px;
+	  margin-bottom: 60px;
+	}
+  }
+}
+
+/*--- agencies ---*/
+.agenices-image {
+  max-width: 380px;
+  margin: 0 auto 60px auto;
+}
+@media (min-width: @grid-float-breakpoint) {
+  .agenices-image {
+    max-width: 450px;
+  }
+}
+
+/*--- services ---*/
+.services {
+  margin: 30px auto;
+  max-width: 350px;
+  .services__icon {
+	width: 120px;
+	height: 120px;
+	line-height: 120px;
+	border-radius: 50%;
+	background-color: @brand-primary;
+	text-align: center;
+	float: left;
+	margin-right: 30px;
+	vertical-align: middle;
+	img {
+	  display: inline;
+	  max-height: 45px;
+	  max-width: 50px;
+	  width: auto;
+	  margin: auto;
+	}
+  }
+  .services__title {
+	float: left;
+	margin-top: 45px;
+  }
+}
+@media (max-width: 481px) {
+  .services {
+    .services__icon {
+	  width: 100px;
+	  height: 100px;
+	  line-height: 100px;
+	}
+  }
+}
+@media (min-width: @grid-float-breakpoint) {
+  .services {
+    max-width: auto;
+    .services__icon {
+	  width: 185px;
+	  height: 185px;
+	  line-height: 185px;
+	  float: none;
+	  margin: 0 auto 50px auto;
+	  img {
+	    display: inline;
+	    max-height: 65px;
+	    max-width: 85px;
+	  }
+    }
+    .services__title {
+	  float: none;
+	  margin-top: 0;
+    }
+  }
+}
+
+/*--- client logo ---*/
+.client {
+  .client__logo {
+	height: 80px;
+	line-height: 80px;
+	vertical-align: middle;
+	img {
+	  max-width: 190px;
+	  max-height: 65px;
+	  width: auto;
+	  height: auto;
+	  display: inline;
+	}
+  }
+}
+
+/*--- map ---*/
+.map {
+  &:before, &:after {
+	content: "";
+	height: 20px;
+	left: 0;
+	position: absolute;
+	top: -20px;
+	width: 100%;
+	z-index: 1;
+	.box-shadow(0px 5px 10px rgba(0,0,0,0.1));
+  }
+  &:after {
+	top: auto;
+	bottom: -24px;
+	.box-shadow(0px -5px 10px rgba(0,0,0,0.1));
+  }
+  .infobox-inner {
+	text-align: left;
+  }
+}
+
+/*--- contact --*/
+.contact-block {
+  .container {
+	max-width: 400px;
+    @media (min-width: @grid-float-breakpoint) { max-width: 500px; }
+  }
+  .form-submit {
+	display: block;
+	width: 100%;
+  }
+  .node-webform {
+	header {
+	  display: none;
+	}
+	.field-name-field-body {
+	  margin-top: 30px;
+	}
+  }
+}
+
+/*--- utilities --*/
+.fs-width {
+  width: 100%;
+  .container {
+	width: 100%;
+	padding: 0;
+  }
+}
+.fs-height {
+  min-height: 100%;  /* Fallback for vh unit */
+  min-height: 100vh;
+  padding: 30px 0 90px 0;
+  position: relative;
+  .scroll {
+	position: absolute;
+	bottom: 30px;
+	left: 0;
+	right: 0;
+	margin: auto;
+  }
+}
+.vertical-center {
+  min-height: 100%;  /* Fallback for vh unit */
+  min-height: 100vh;
+  /* Make it a flex container */
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; 
+
+  /* Align the bootstrap's container vertically */
+    -webkit-box-align : center;
+  -webkit-align-items : center;
+       -moz-box-align : center;
+       -ms-flex-align : center;
+          align-items : center;
+
+  /* In legacy web browsers such as Firefox 9
+     we need to specify the width of the flex container */
+  width: 100%;
+
+  /* Also 'margin: 0 auto' doesn't have any effect on flex items in such web browsers
+     hence the bootstrap's container won't be aligned to the center anymore.
+     Therefore, we should use the following declarations to get it centered again */
+         -webkit-box-pack : center;
+            -moz-box-pack : center;
+            -ms-flex-pack : center;
+  -webkit-justify-content : center;
+          justify-content : center;
+}
